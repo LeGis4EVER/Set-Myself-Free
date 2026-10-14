@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Set Myself Free — a private, encouraging space to build healthier habits.">
+  <title>Set Myself Free</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Set Myself Free home">
+      <span class="brand-mark">✦</span>
+      <span><strong>Set Myself Free</strong><small>One day, one choice at a time.</small></span>
+    </a>
+    <button id="installBtn" class="button button-quiet install-button" hidden>Install app</button>
+  </header>
+
+  <main>
+    <section id="home" class="page active" aria-labelledby="home-title">
+      <div class="hero">
+        <div class="eyebrow">YOUR SPACE TO GROW</div>
+        <h1 id="home-title">You can begin<br><em>again, anytime.</em></h1>
+        <p>A calm, private space to understand your habits, practise new strategies, and keep moving forward — without shame.</p>
+        <div class="hero-actions">
+          <button class="button button-primary" data-go="tracker">Check in today <span aria-hidden="true">→</span></button>
+          <button class="button button-quiet" data-go="advice">Read encouragement</button>
+        </div>
+        <div class="daily-note"><span class="sun">☼</span><div><strong>A gentle reminder</strong><p>Progress is more than a streak. Every thoughtful choice counts.</p></div></div>
+      </div>
+      <div class="section-heading"><div><span class="eyebrow">YOUR DASHBOARD</span><h2>A little progress adds up</h2></div></div>
+      <div class="stat-grid">
+        <article class="stat-card"><span class="stat-icon">🌱</span><span class="stat-label">Current streak</span><strong id="homeStreak">0 days</strong><small>Based on your tracker</small></article>
+        <article class="stat-card"><span class="stat-icon">☀️</span><span class="stat-label">Check-ins</span><strong id="homeCheckins">0</strong><small>Days you checked in</small></article>
+        <article class="stat-card"><span class="stat-icon">📝</span><span class="stat-label">Your reflections</span><strong id="homeReflections">0</strong><small>Private to this device</small></article>
+      </div>
+      <div class="two-column">
+        <article class="feature-card feature-green"><span class="feature-icon">🧭</span><h3>Find your next step</h3><p>Explore practical ideas for responding to urges and building routines that matter to you.</p><button class="text-button" data-go="advice">Explore advice <span>→</span></button></article>
+        <article class="feature-card"><span class="feature-icon">💬</span><h3>You are not alone</h3><p>Read about the stories page and learn how sharing could work safely in a future version.</p><button class="text-button" data-go="stories">Visit stories & strategies <span>→</span></button></article>
+      </div>
+      <p class="privacy-note"><span>🔒</span> Your entries stay in this browser on this device. This first version does not send them to a server.</p>
+    </section>
+
+    <section id="tracker" class="page" aria-labelledby="tracker-title">
+      <div class="page-intro"><span class="eyebrow">YOUR JOURNEY</span><h1 id="tracker-title">Recovery tracker</h1><p>Track the choices you want to make. A setback doesn't erase what you've learned.</p></div>
+      <div class="tracker-layout">
+        <article class="panel streak-panel">
+          <span class="panel-kicker">YOUR CURRENT STREAK</span>
+          <div class="streak-number"><span id="streakNumber">0</span><small>days</small></div>
+          <p id="streakMessage">Every journey starts with one choice.</p>
+          <div class="streak-actions"><button class="button button-primary" id="checkinBtn">✓ Check in today</button><button class="button button-quiet" id="resetStreakBtn">Record a setback</button></div>
+          <small class="muted">A check-in records today as a day you're practising your goal. Setbacks are recorded privately and respectfully.</small>
+        </article>
+        <article class="panel">
+          <div class="panel-title"><span class="panel-symbol">📈</span><div><h2>Your progress</h2><p>Small steps count, too.</p></div></div>
+          <div class="progress-row"><span>Check-in days</span><strong id="trackerCheckins">0</strong></div>
+          <div class="progress-track"><span id="checkinBar"></span></div>
+          <div class="progress-row"><span>Reflections saved</span><strong id="trackerReflections">0</strong></div>
+          <div class="progress-track"><span id="reflectionBar"></span></div>
+          <div class="milestone"><span>✧</span><div><strong>Your next milestone</strong><p id="nextMilestone">Start with one check-in today.</p></div></div>
+        </article>
+      </div>
+      <article class="panel reflection-panel">
+        <div class="panel-title"><span class="panel-symbol">✍️</span><div><h2>Private daily reflection</h2><p>Write for yourself. You don't have to share it.</p></div></div>
+        <label for="reflectionDate">Date</label><input id="reflectionDate" type="date">
+        <label for="reflectionText">What did you notice today?</label>
+        <textarea id="reflectionText" rows="4" placeholder="A trigger I noticed, something that helped, or one thing I'm proud of…"></textarea>
+        <div class="form-footer"><small id="reflectionStatus" class="muted">Saved only on this device when you press save.</small><button id="saveReflectionBtn" class="button button-primary">Save reflection</button></div>
+      </article>
+      <article class="panel history-panel">
+        <div class="panel-title"><span class="panel-symbol">🗓️</span><div><h2>Recent check-ins</h2><p>Your recent activity, kept private.</p></div></div>
+        <ul id="checkinHistory" class="history-list"><li class="empty-state">Your check-ins will appear here.</li></ul>
+        <button id="exportBtn" class="button button-quiet">Export my data</button>
+      </article>
+    </section>
+
+    <section id="advice" class="page" aria-labelledby="advice-title">
+      <div class="page-intro"><span class="eyebrow">TOOLS FOR THE JOURNEY</span><h1 id="advice-title">Advice & encouragement</h1><p>A starter library of gentle ideas. You can replace or add to these with your own writing.</p></div>
+      <div class="callout"><span>💚</span><div><strong>Your voice belongs here.</strong><p>This is sample content for the first version, not a substitute for the advice you plan to write. Edit the articles in <code>content.js</code>.</p></div></div>
+      <div class="filter-row" role="group" aria-label="Filter advice"><button class="filter-chip selected" data-filter="all">All topics</button><button class="filter-chip" data-filter="urges">Urges</button><button class="filter-chip" data-filter="setbacks">Setbacks</button><button class="filter-chip" data-filter="habits">Healthy habits</button></div>
+      <div id="adviceGrid" class="advice-grid"></div>
+      <article class="panel custom-advice">
+        <div class="panel-title"><span class="panel-symbol">🖋️</span><div><h2>Your own notes</h2><p>Save personal reminders and strategies.</p></div></div>
+        <label for="customAdviceTitle">Title</label><input id="customAdviceTitle" type="text" maxlength="100" placeholder="A reminder that helps me">
+        <label for="customAdviceText">Your note</label><textarea id="customAdviceText" rows="3" maxlength="3000" placeholder="Write a strategy, encouragement, or lesson…"></textarea>
+        <button id="saveCustomAdviceBtn" class="button button-primary">Save my note</button>
+        <div id="customAdviceList" class="custom-note-list"></div>
+      </article>
+    </section>
+
+    <section id="ai" class="page" aria-labelledby="ai-title">
+      <div class="page-intro"><span class="eyebrow">A SUPPORTIVE SPACE</span><h1 id="ai-title">AI advice giver</h1><p>A future feature for thinking through difficult moments with a calm, supportive guide.</p></div>
+      <article class="ai-hero">
+        <div class="ai-orb">✦</div><div><span class="status-pill">Setup required</span><h2>Your supportive AI companion</h2><p>This version doesn't connect to an AI service yet. That keeps your data private while we plan a safe setup.</p></div>
+      </article>
+      <div class="two-column">
+        <article class="panel"><span class="feature-icon">🛡️</span><h3>Safety comes first</h3><p>Before enabling AI, we'll need a protected server-side connection, sensible usage limits, and safeguards against harmful or shaming responses.</p></article>
+        <article class="panel"><span class="feature-icon">🔐</span><h3>Privacy by design</h3><p>Never put an AI API key in public website code. We'll also explain what data is sent to the AI provider before any chat feature goes live.</p></article>
+      </div>
+      <article class="panel"><h2>Try a reflection prompt</h2><p class="muted">These prompts work now without AI. Pick one to add it to your private reflection.</p><div class="prompt-list"><button class="prompt-button" data-prompt="What was happening just before I felt an urge, and what might help me next time?">Understand a trigger <span>→</span></button><button class="prompt-button" data-prompt="What is one kind, practical thing I can do for myself in the next ten minutes?">Choose a next step <span>→</span></button><button class="prompt-button" data-prompt="What did I learn from today that I can use tomorrow, without judging myself?">Learn without shame <span>→</span></button></div><button class="button button-primary" data-go="tracker">Open private reflection</button></article>
+      <p class="disclaimer">This tool is for encouragement and reflection, not diagnosis or professional treatment. If you feel overwhelmed, consider talking with a trusted adult or qualified professional.</p>
+    </section>
+
+    <section id="stories" class="page" aria-labelledby="stories-title">
+      <div class="page-intro"><span class="eyebrow">LEARNING TOGETHER</span><h1 id="stories-title">Stories & strategies</h1><p>Honest experiences can help people feel less alone. Sharing should always be your choice.</p></div>
+      <div class="callout"><span>🤝</span><div><strong>Community sharing is not live yet.</strong><p>This starter version does not publish anything to the internet. Your drafts below stay on this device until you export them yourself.</p></div></div>
+      <div class="story-layout">
+        <article class="panel"><div class="panel-title"><span class="panel-symbol">📚</span><div><h2>Community guidelines</h2><p>For a future moderated stories page.</p></div></div><ul class="guideline-list"><li><span>✓</span> Share what helped you, without claiming it works for everyone.</li><li><span>✓</span> Be kind. No shame, insults, or pressure.</li><li><span>✓</span> Keep identifying details and explicit content out of posts.</li><li><span>✓</span> Respect privacy; never pressure anyone to share.</li><li><span>✓</span> Ask a trusted adult for help if a post raises a safety concern.</li></ul><p class="muted">A public community would need moderation, reporting, privacy controls, and age-appropriate safeguards before launch.</p></article>
+        <article class="panel"><div class="panel-title"><span class="panel-symbol">✍️</span><div><h2>Draft a story or strategy</h2><p>Save a draft privately on this device.</p></div></div>
+          <label for="storyType">Type</label><select id="storyType"><option value="Strategy">Strategy that helped me</option><option value="Reflection">Personal reflection</option><option value="Encouragement">Encouragement for others</option></select>
+          <label for="storyTitle">Title</label><input id="storyTitle" type="text" maxlength="100" placeholder="A small thing that helped">
+          <label for="storyText">Your draft</label><textarea id="storyText" rows="5" maxlength="4000" placeholder="Write in your own words. Avoid names and identifying details."></textarea>
+          <button id="saveStoryBtn" class="button button-primary">Save private draft</button>
+        </article>
+      </div>
+      <div class="section-heading"><div><span class="eyebrow">YOUR DRAFTS</span><h2>Saved on this device</h2></div></div>
+      <div id="storiesList" class="stories-list"><div class="empty-state">Your private drafts will appear here.</div></div>
+    </section>
+
+    <section id="about" class="page" aria-labelledby="about-title">
+      <div class="page-intro"><span class="eyebrow">THE HEART OF THE PROJECT</span><h1 id="about-title">About Set Myself Free</h1><p>A project built around hope, learning, and taking the next step.</p></div>
+      <article class="about-hero"><div class="about-symbol">✦</div><span class="eyebrow">OUR GUIDING IDEA</span><h2>Freedom isn't perfection.<br><em>It's learning how to move forward.</em></h2><p>Set Myself Free aims to help people build a healthier relationship with their habits through practical tools, honest reflection, and encouragement without shame.</p></article>
+      <article class="panel about-edit"><div class="panel-title"><span class="panel-symbol">👋</span><div><h2>About the creator</h2><p>Make this section your own.</p></div></div>
+        <div id="aboutDisplay"><p id="aboutTextDisplay">I'm building Set Myself Free because I want to turn what I've learned into something that could support other people, too.</p><button id="editAboutBtn" class="button button-quiet">Edit my story</button></div>
+        <div id="aboutEditor" hidden><label for="aboutTextInput">Your story (avoid private identifying details)</label><textarea id="aboutTextInput" rows="6" maxlength="3000"></textarea><div class="form-footer"><button id="cancelAboutBtn" class="button button-quiet">Cancel</button><button id="saveAboutBtn" class="button button-primary">Save story</button></div></div>
+      </article>
+      <div class="two-column">
+        <article class="feature-card feature-green"><span class="feature-icon">🌿</span><h3>Kindness over shame</h3><p>People deserve support and dignity while they work on changing habits.</p></article>
+        <article class="feature-card"><span class="feature-icon">🪴</span><h3>Progress at your pace</h3><p>Different strategies work for different people. Learning is part of the journey.</p></article>
+      </div>
+      <p class="disclaimer">Set Myself Free is a personal support project, not a medical service. Use the tools in ways that feel safe and helpful for you.</p>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button class="nav-item active" data-go="home"><span>⌂</span><small>Home</small></button>
+    <button class="nav-item" data-go="tracker"><span>◷</span><small>Tracker</small></button>
+    <button class="nav-item" data-go="advice"><span>▤</span><small>Advice</small></button>
+    <button class="nav-item" data-go="ai"><span>✧</span><small>AI guide</small><i class="nav-dot"></i></button>
+    <button class="nav-item" data-go="stories"><span>♡</span><small>Stories</small></button>
+    <button class="nav-item" data-go="about"><span>☼</span><small>About</small></button>
+  </nav>
+
+  <dialog id="setbackDialog" class="modal">
+    <form method="dialog" id="setbackForm">
+      <div class="modal-icon">🌱</div><h2>A setback is information, not your identity.</h2>
+      <p>Recording this will restart the current streak from today. Your past check-ins and reflections will remain.</p>
+      <label for="setbackNote">Optional note: what might help next time?</label><textarea id="setbackNote" rows="3" maxlength="1000" placeholder="Be kind to yourself…"></textarea>
+      <div class="modal-actions"><button class="button button-quiet" value="cancel">Cancel</button><button id="confirmSetbackBtn" class="button button-primary" value="confirm">Record setback</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

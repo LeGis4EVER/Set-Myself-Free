@@ -1,0 +1,18 @@
+{
+  "name": "Set Myself Free",
+  "short_name": "Set Myself Free",
+  "description": "A calm, private space to build healthier habits.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbfaf5",
+  "theme_color": "#173f35",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
